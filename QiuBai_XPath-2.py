@@ -44,7 +44,7 @@ def dumpToFile(text):
 
 
 if __name__ == "__main__":
-    Input = int(input('Please Input Pages ------'))
+    Input = int(input('Please Input Pages -----'))
     urls = ['https://www.qiushibaike.com/text/page/{}/'.format(str(i)) for i in range(1, Input)]
     for url in urls:
         text = getInfo(url)
