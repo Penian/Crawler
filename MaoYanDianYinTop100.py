@@ -44,7 +44,7 @@ def parse_one_page(html):
 
 
 def write_to_file(content):
-    with open("MYDX100.txt", "a", encoding='utf-8') as f:  #
+    with open("MaoYanDianYinTop100.txt", "a", encoding='utf-8') as f:  #
         f.write(json.dumps(content, ensure_ascii=False) + "\n")
         f.close()
 
