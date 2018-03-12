@@ -20,17 +20,17 @@ url = 'https://www.pexels.com/search/' + word
 res = requests.get(url,headers = headers)
 soup = BeautifulSoup(res.text,'lxml')
 #print(soup)
-imgs = soup.select('article > a > img')
+imgs = soup.select('article > a > img')     #keep space alongside the operator '>'
 list = []
 for img in imgs:
     photo = img.get('src')
     list.append(photo)
 
-path = 'pexels/'
+path = 'pexels/'        #creat a directory.
 
 for i in list:
     data = requests.get(i,headers = headers)
-    with open(path + word+'_'+i.split('?')[0][-10:],'wb') as f:
+    with open(path + word+'_'+i.split('?')[0][-10:],'wb') as f:  #word add the key word.
         f.write(data.content)
 
 '''
