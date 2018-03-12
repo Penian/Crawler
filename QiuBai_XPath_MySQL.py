@@ -9,6 +9,8 @@
 import requests
 from lxml import etree
 import pymysql
+import time
+import random
 
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.110 Safari/537.36'}
@@ -24,7 +26,7 @@ def getInfo(url):
         html = etree.HTML(res.text)
         forBlock = html.xpath('//div[@class="article block untagged mb15 typs_old"]') + html.xpath('//div[@class="article block untagged mb15 typs_hot"]')
         for block in forBlock:
-            ID = block.xpath('div[1]/a[2]/h2/text()')[0] if block.xpath('div[1]/a[2]/h2/text()') else ''
+            ID = block.xpath('div[1]/a[2]/h2/text()')[0] if block.xpath('div[1]/a[2]/h2/text()') else '匿名用户'
             Text = block.xpath('a[1]/div/span/text()')[0]
             Up = block.xpath('div[2]/span[1]/i/text()')[0]
             Comment  = block.xpath('div[2]/span[2]/a/i/text()')[0]
@@ -44,6 +46,7 @@ if __name__ == "__main__":
         text = getInfo(url)
     db.commit()
     db.close()
+    time.sleep(random.random())
 
 
 
